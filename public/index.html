@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trapezium 2950</title>
     <style>
-      html, body {
-        height: 100%;
-        margin: 0;
-        background-color: #f0f0f0;
-      }
-
-      /* Container for the image to center it */
-      .flyer {
-        display: flex;
-        justify-content: center; /* Center horizontally */
-        align-items: center;     /* Center vertically */
-        height: 100%;
-
-        img {
-          /* This will make sure the image is responsive and fits within the viewport */
-          max-width: 90%;
-          max-height: 90vh; /* vh units are based on the height of the viewport */
-          /* If you want some space around the image, consider adding padding to body or use percentage values lower than 100% for max-width/max-height */
+        html, body {
+            height: 100%;
+            margin: 0;
+            background-color: #f0f0f0;
         }
-      }
 
+        /* Container for the image to center it */
+        .flyer {
+            display: flex;
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            height: 100%;
+            flex-wrap: wrap;
+            /*flex-direction: column;*/
+            img {
+                max-width: 90%;
+                height: auto;
+                max-height: 90%;
+                padding: 10px;
+            }
+        }
+        @media (max-width: 600px) {
+            .flyer {
+                flex-direction: row;
+            }
+        }
 
     </style>
-  </head>
-  <body>
-  <div class="flyer">
-    <img src="Trapeziumfeesten.png">
-  </div>
-  </body>
+</head>
+<body>
+<div class="flyer">
+    <img src="Trapeziumfeesten_1.png">
+    <img src="Trapeziumfeesten_2.png">
+</div>
+</body>
 </html>
