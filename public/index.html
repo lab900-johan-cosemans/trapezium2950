@@ -11,6 +11,15 @@
             background-color: #f0f0f0;
         }
 
+        .link {
+            margin: 1rem;
+            a {
+                display: flex;
+                justify-content: center;
+                text-decoration: none;
+            }
+        }
+
         /* Container for the image to center it */
         .flyer {
             display: flex;
@@ -18,7 +27,6 @@
             align-items: center; /* Center vertically */
             height: 100%;
             flex-wrap: wrap;
-            /*flex-direction: column;*/
             img {
                 max-width: 90%;
                 height: auto;
@@ -32,12 +40,91 @@
             }
         }
 
+   .button-inschrijving {
+       background-color: #eb6d4d;
+       border: 0 solid #E5E7EB;
+       box-sizing: border-box;
+       color: #ffffff;
+       display: flex;
+       font-family: ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+       font-size: 1rem;
+       font-weight: 700;
+       justify-content: center;
+       line-height: 1.75rem;
+       padding: .75rem 1.65rem;
+       position: relative;
+       text-align: center;
+       text-decoration: none #000000 solid;
+       text-decoration-thickness: auto;
+       /*width: 100%;*/
+       max-width: 460px;
+       position: relative;
+       cursor: pointer;
+       transform: rotate(-2deg);
+       user-select: none;
+       -webkit-user-select: none;
+       touch-action: manipulation;
+   }
+
+        .button-inschrijving:focus {
+            outline: 0;
+        }
+
+        .button-inschrijving:after {
+            content: '';
+            position: absolute;
+            border: 1px solid #000000;
+            bottom: 4px;
+            left: 4px;
+            width: calc(100% - 1px);
+            height: calc(100% - 1px);
+        }
+
+        .button-inschrijving:hover:after {
+            bottom: 2px;
+            left: 2px;
+        }
+
+        @media (min-width: 768px) {
+            .button-inschrijving {
+                padding: .75rem 3rem;
+                font-size: 1.25rem;
+            }
+        }
+
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var host = window.location.hostname;
+            var subdomain = host.split('.')[0]; // Assumes subdomain is the first part before the first dot
+
+            if(subdomain.startsWith('inschrijv')) {
+                window.location.href = 'https://forms.gle/DGzcxpoxe4D879W76';
+            }
+        });
+    </script>
 </head>
 <body>
-<div class="flyer">
-    <img src="Trapeziumfeesten_1.png">
-    <img src="Trapeziumfeesten_2.png">
+
+
+
+
+<div class="link">
+    <a href="https://inschrijvingen.trapezium2950.be" target="_blank">
+        <button class="button-inschrijving" role="button">Schrijf je hier in!</button>
+    </a>
 </div>
+<a href="https://inschrijvingen.trapezium2950.be" target="_blank">
+<div class="flyer">
+        <img src="Trapeziumfeesten_1.png" alt="flyer">
+</div>
+</a>
+<div class="link">
+    <a href="https://inschrijvingen.trapezium2950.be" target="_blank">
+        <button class="button-inschrijving" role="button">Schrijf je hier in!</button>
+    </a>
+</div>
+
 </body>
 </html>
