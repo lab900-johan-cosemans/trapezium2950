@@ -1,94 +1,356 @@
 <!DOCTYPE html>
-<html>
+<html lang="nl">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Trapezium 2950</title>
+    <title>Trapezium 2950 · School aan de Glasbol 2026</title>
     <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            background-color: #f0f0f0;
-            font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-
-        }
-        a {
-            color: #46BAFFFF;
-            font-size: 18px
-        }
-
-        .link {
-            a {
-                display: flex;
-                justify-content: center;
-                text-decoration: none;
-            }
+        :root {
+            color-scheme: light;
+            --bg: #fff4bf;
+            --bg-strong: #ffe07a;
+            --surface: rgba(255, 255, 255, 0.72);
+            --surface-strong: rgba(255, 255, 255, 0.88);
+            --text: #245c2f;
+            --muted: #4f7554;
+            --accent: #7cdf57;
+            --accent-strong: #59c943;
+            --shadow: 0 30px 80px rgba(103, 129, 39, 0.18);
+            --radius: 28px;
         }
 
-        /* Container for the image to center it */
-        .flyer {
-            img {
-                max-height: 75vh;
-            }
-        }
-
-        .button-inschrijving {
-            background-color: #46baff;
-            border: 0 solid #E5E7EB;
+        * {
             box-sizing: border-box;
-            color: #ffffff;
-            display: flex;
-            font-family: ui-sans-serif, system-ui, -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text);
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.65) 0, rgba(255, 255, 255, 0) 28%),
+                radial-gradient(circle at bottom right, rgba(124, 223, 87, 0.24) 0, rgba(124, 223, 87, 0) 30%),
+                linear-gradient(180deg, #fff9dc 0%, var(--bg) 45%, #fff8d4 100%);
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .page {
+            width: min(1180px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 32px 0 56px;
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 32px;
+            align-items: center;
+            padding: 24px 0 40px;
+        }
+
+        .hero-card,
+        .info-card,
+        .flyer-card,
+        .footer-card {
+            background: var(--surface);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(12px);
+        }
+
+        .hero-card {
+            padding: 36px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            border-radius: 999px;
+            background: rgba(124, 223, 87, 0.18);
+            color: var(--muted);
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+
+        h1 {
+            margin: 18px 0 12px;
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            line-height: 0.92;
+            letter-spacing: -0.04em;
+        }
+
+        .lead {
+            margin: 0;
+            max-width: 42rem;
+            color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.7;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+            margin: 28px 0;
+        }
+
+        .meta-item {
+            padding: 16px 18px;
+            border-radius: 22px;
+            background: var(--surface-strong);
+            border: 1px solid rgba(124, 223, 87, 0.15);
+        }
+
+        .meta-item strong,
+        .info-item strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.84rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .meta-item span,
+        .info-item span {
             font-size: 1rem;
             font-weight: 700;
+        }
+
+        .cta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-top: 8px;
+        }
+
+        .button,
+        .button-secondary {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-            line-height: 1.75rem;
-            padding: .75rem 1.65rem;
-            position: relative;
-            text-align: center;
-            text-decoration: none #000000 solid;
-            text-decoration-thickness: auto;
-            /*width: 100%;*/
-            max-width: 460px;
-            position: relative;
-            cursor: pointer;
-            transform: rotate(-2deg);
-            user-select: none;
-            -webkit-user-select: none;
-            touch-action: manipulation;
+            min-height: 54px;
+            padding: 0 24px;
+            border-radius: 999px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
         }
 
-        .button-inschrijving:focus {
-            outline: 0;
+        .button {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+            color: #ffffff;
+            box-shadow: 0 16px 30px rgba(89, 201, 67, 0.25);
         }
 
-        .button-inschrijving:after {
-            content: '';
+        .button-secondary {
+            background: rgba(255, 255, 255, 0.7);
+            color: var(--text);
+            border: 1px solid rgba(79, 117, 84, 0.15);
+        }
+
+        .button:hover,
+        .button-secondary:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            position: relative;
+            padding: 18px;
+        }
+
+        .hero-visual img {
+            display: block;
+            width: 100%;
+            max-width: 420px;
+            margin: 0 auto;
+            border-radius: 28px;
+            box-shadow: 0 24px 60px rgba(69, 84, 28, 0.24);
+        }
+
+        .hero-note {
             position: absolute;
-            border: 1px solid #000000;
-            bottom: 4px;
-            left: 4px;
-            width: calc(100% - 1px);
-            height: calc(100% - 1px);
+            right: 8px;
+            bottom: 18px;
+            padding: 14px 16px;
+            max-width: 220px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 16px 40px rgba(75, 95, 29, 0.18);
+            font-size: 0.95rem;
+            font-weight: 700;
+            line-height: 1.45;
+            color: var(--text);
         }
 
-        .button-inschrijving:hover:after {
-            bottom: 2px;
-            left: 2px;
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 24px;
+            margin-bottom: 24px;
         }
 
-        @media (min-width: 768px) {
-            .button-inschrijving {
-                padding: .75rem 3rem;
-                font-size: 1.25rem;
+        .info-card {
+            padding: 28px;
+        }
+
+        .info-card h2,
+        .flyers h2 {
+            margin: 0 0 18px;
+            font-size: 1.7rem;
+            letter-spacing: -0.03em;
+        }
+
+        .info-columns {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .info-item {
+            padding: 18px;
+            border-radius: 22px;
+            background: rgba(255, 255, 255, 0.68);
+        }
+
+        .info-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .flyers {
+            margin-top: 10px;
+        }
+
+        .flyer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .flyer-card {
+            padding: 20px;
+        }
+
+        .flyer-card img {
+            display: block;
+            width: 100%;
+            border-radius: 24px;
+            background: #ffffff;
+        }
+
+        .flyer-card h3 {
+            margin: 14px 6px 4px;
+            font-size: 1.15rem;
+        }
+
+        .flyer-card p {
+            margin: 0 6px;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        .footer-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            margin-top: 28px;
+            padding: 24px 28px;
+        }
+
+        .footer-card strong {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.84rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .footer-card a {
+            text-decoration: none;
+            font-weight: 800;
+        }
+
+        @media (max-width: 980px) {
+            .hero,
+            .info-grid,
+            .flyer-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-card {
+                padding: 28px;
+            }
+
+            .meta-grid,
+            .info-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-note {
+                position: static;
+                margin: 14px auto 0;
+                max-width: 420px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .page {
+                width: min(100% - 20px, 1180px);
+                padding-top: 18px;
+                padding-bottom: 32px;
+            }
+
+            .hero {
+                gap: 20px;
+                padding-bottom: 28px;
+            }
+
+            .hero-card,
+            .info-card,
+            .flyer-card,
+            .footer-card {
+                border-radius: 24px;
+            }
+
+            .hero-card,
+            .info-card,
+            .footer-card {
+                padding: 22px;
+            }
+
+            h1 {
+                font-size: clamp(2.2rem, 12vw, 3.3rem);
+            }
+
+            .footer-card {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var host = window.location.hostname;
-            var subdomain = host.split('.')[0]; // Assumes subdomain is the first part before the first dot
+            const host = window.location.hostname;
+            const subdomain = host.split('.')[0];
 
             if (subdomain.startsWith('inschrijv')) {
                 window.location.href = 'https://forms.gle/DGzcxpoxe4D879W76';
@@ -97,23 +359,98 @@
     </script>
 </head>
 <body>
-
-<div style="display: flex; flex-direction: column">
-    <div class="link" style="flex: 1; margin: 20px 0;">
-        <a href="https://forms.gle/DGzcxpoxe4D879W76" target="_blank">
-            <button class="button-inschrijving" role="button">Schrijf je hier in!</button>
-        </a>
-    </div>
-    <div style="flex: auto; text-align:center">
-        <a href="https://forms.gle/DGzcxpoxe4D879W76" target="_blank">
-            <div class="flyer">
-                <img src="2025/flyer.png" alt="flyer">
+<div class="page">
+    <section class="hero">
+        <div class="hero-card">
+            <div class="eyebrow">Trapezium 2950 · Buurtfeest 2026</div>
+            <h1>School aan de Glasbol!</h1>
+            <p class="lead">
+                Op zaterdag 13 juni maken we er opnieuw een gezellige buurteditie van met buren, kinderanimatie,
+                muziek, eten, drankjes en een free podium voor lokaal talent.
+            </p>
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <strong>Wanneer</strong>
+                    <span>13 juni 2026</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Vanaf</strong>
+                    <span>15u</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Waar</strong>
+                    <span>Kruispunt Voetbeeklaan &amp; Kraaienheuvel</span>
+                </div>
             </div>
-        </a>
-    </div>
-    <div style="flex: auto; text-align:center;padding-top: 20px">
-        <a href="mailto:trapezium2950@gmail.com">trapezium2950@gmail.com</a>
-    </div>
+            <div class="cta-row">
+                <a class="button" href="https://forms.gle/DGzcxpoxe4D879W76" target="_blank" rel="noreferrer">Schrijf je in</a>
+                <a class="button-secondary" href="#flyers">Bekijk de flyer</a>
+            </div>
+        </div>
+
+        <div class="hero-visual">
+            <img src="2026/front.jpeg" alt="Voorkant flyer School aan de Glasbol 2026">
+            <div class="hero-note">Gezellige buren, kinderanimatie, muziek, free podium, food en drinks.</div>
+        </div>
+    </section>
+
+    <section class="info-grid">
+        <div class="info-card">
+            <h2>Wat mag je verwachten?</h2>
+            <div class="info-columns">
+                <div class="info-item">
+                    <strong>Sfeer</strong>
+                    <span>Buurtfeest met gezellige buren en ontmoetingen</span>
+                </div>
+                <div class="info-item">
+                    <strong>Activiteiten</strong>
+                    <span>Kinderanimatie, springkastelen, spelletjes en ijsjes</span>
+                </div>
+                <div class="info-item">
+                    <strong>Muziek</strong>
+                    <span>Optreden van lokale bands en een free podium</span>
+                </div>
+                <div class="info-item">
+                    <strong>Eten &amp; drinken</strong>
+                    <span>Bar, frietjes en hapjes aan democratische prijzen</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h2>Doe mee</h2>
+            <p>
+                Kom je graag langs? Schrijf je in via de website om de hoeveelheden beter in te schatten.
+                Heb jij een talent dat gezien mag worden? Mail naar
+                <a href="mailto:trapezium2950@gmail.com">trapezium2950@gmail.com</a>
+                en verras de buren tijdens het free podium.
+            </p>
+        </div>
+    </section>
+
+    <section class="flyers" id="flyers">
+        <h2>Flyer 2026</h2>
+        <div class="flyer-grid">
+            <article class="flyer-card">
+                <img src="2026/front.jpeg" alt="Voorkant van de flyer voor School aan de Glasbol 2026">
+                <h3>Voorkant</h3>
+                <p>De affiche met datum, uur, locatie en de hoofdactiviteiten van het buurtfeest.</p>
+            </article>
+            <article class="flyer-card">
+                <img src="2026/back.jpeg" alt="Achterkant van de flyer voor School aan de Glasbol 2026">
+                <h3>Achterkant</h3>
+                <p>Meer uitleg over het programma, de straten, het free podium en de praktische info.</p>
+            </article>
+        </div>
+    </section>
+
+    <footer class="footer-card">
+        <div>
+            <strong>Contact</strong>
+            <a href="mailto:trapezium2950@gmail.com">trapezium2950@gmail.com</a>
+        </div>
+        <a class="button" href="https://forms.gle/DGzcxpoxe4D879W76" target="_blank" rel="noreferrer">Inschrijven</a>
+    </footer>
 </div>
 </body>
 </html>
